@@ -1,6 +1,38 @@
 import { Download, Mail, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
-import { motion, type Variants } from "motion/react";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+  type Variants,
+} from "motion/react";
+import { Typewriter } from "react-simple-typewriter";
+import { useEffect, useRef } from "react";
+
+const AnimatedCounter = ({
+  from,
+  to,
+  duration = 2.5,
+}: {
+  from: number;
+  to: number;
+  duration?: number;
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  const count = useMotionValue(from);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+
+  useEffect(() => {
+    if (isInView) {
+      animate(count, to, { duration: duration });
+    }
+  }, [isInView, count, to, duration]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+};
 
 // Chap tarafdagi barcha elementlarni o'rab turuvchi Ota qoida
 const leftContainerVariants: Variants = {
@@ -44,16 +76,6 @@ const textContainerVariants: Variants = {
   },
 };
 
-// Har bir alohida harf (Bola) uchun qoida
-const letterVariants: Variants = {
-  hidden: { opacity: 0, y: 15 }, // Harf ozgina pastda va ko'rinmas turadi
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
-  },
-};
-
 const Hero = () => {
   return (
     <section
@@ -78,27 +100,29 @@ const Hero = () => {
             Available for Work
           </motion.div>
           {/*Heading */}
-          <motion.div variants={itemVariants} className="mt-4 space-y-6">
+          <motion.div className="mt-4 space-y-6">
             <motion.h1
               variants={textContainerVariants}
               initial="hidden"
               animate="visible"
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight text-gray-100"
             >
-              <span className="flex flex-wrap">
-                {"Hello, I'm".split("").map((char, index) => (
-                  <motion.span key={`line1-${index}`} variants={letterVariants}>
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
-              </span>
+              <span className="block font-bold">Hello, I'm</span>
 
-              <span className="flex flex-wrap">
-                {"Sarvarjon Developer".split("").map((char, index) => (
-                  <motion.span key={`line1-${index}`} variants={letterVariants}>
-                    {char === " " ? "\u00A0" : char}
-                  </motion.span>
-                ))}
+              <span className=" block text-emerald-400 ">
+                <Typewriter
+                  words={[
+                    "Sarvarjon Developer",
+                    "Junior Full Stack Developer",
+                    "Problem Solver",
+                  ]}
+                  loop={true}
+                  cursorStyle="|"
+                  delaySpeed={50}
+                  typeSpeed={70}
+                  cursor
+                  deleteSpeed={250}
+                />
               </span>
             </motion.h1>
 
@@ -208,7 +232,7 @@ const Hero = () => {
           className="flex flex-col items-center"
         >
           <span className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            10+
+            <AnimatedCounter from={0} to={10} duration={3} />+
           </span>
           <span className="text-zinc-400 mt-2 font-medium">
             Completed Projects
@@ -230,7 +254,7 @@ const Hero = () => {
           className="flex flex-col items-center"
         >
           <span className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            100%
+            <AnimatedCounter from={0} to={100} duration={2.5} />%
           </span>
           <span className="text-zinc-400 mt-2 font-medium">
             Passion & Drive
@@ -238,11 +262,6 @@ const Hero = () => {
         </motion.div>
         {/* scroll to explore */}
       </motion.div>
-      <div className="mx-auto px-4 md:px-8 sm:px-6 lg:px-8 mt-10 flex justify-center md:justify-start">
-        <span className="text-zinc-500 text-sm animate-bounce">
-          Scroll to explore ↓
-        </span>
-      </div>
     </section>
   );
 };

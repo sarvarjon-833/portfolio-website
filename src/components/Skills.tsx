@@ -19,6 +19,15 @@ const containerVariants: Variants = {
   },
 };
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: -30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const skillsData = [
   {
     title: "Frontend Development",
@@ -77,13 +86,27 @@ const Skills = () => {
       id="skills"
       className=" mx-auto w-full px-4 md:px-6 lg:px-8 sm:px-6 pt-32 py-20 bg-zinc-900"
     >
-      <div className="max-w-6xl mx-auto space-y-4 mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl text-gray-100">Technical Skills</h2>
-        <p className="max-w-2xl mx-auto text-zinc-400 text-sm md:text-base">
-          Comprehensive expertise across modern development stack with focus on
-          scalable web applications and DevOps practices.
-        </p>
-      </div>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView={"visible"}
+        viewport={{ margin: "-100px" }}
+        className="max-w-6xl mx-auto space-y-4 mb-12 text-center"
+      >
+        <motion.div
+          variants={cardVariants}
+          whileHover={{ y: -8, borderColor: "#3f3f46" }}
+          transition={{ duration: 0.3 }}
+        >
+          <h2 className="text-3xl md:text-4xl text-gray-100">
+            Technical Skills
+          </h2>
+          <p className="max-w-2xl mx-auto text-zinc-400 text-sm md:text-base">
+            Comprehensive expertise across modern development stack with focus
+            on scalable web applications and DevOps practices.
+          </p>
+        </motion.div>
+      </motion.div>
 
       <motion.div
         variants={containerVariants}

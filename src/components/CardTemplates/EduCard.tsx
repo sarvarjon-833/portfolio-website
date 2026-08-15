@@ -28,9 +28,9 @@ const EduCard = ({
 }: EduCardProps) => {
   return (
     <div>
-      <Card className="bg-zinc-900/50 border border-zinc-800 text-white rounded-2xl hover:border-zinc-700 transition-all duration-300 h-full">
+      <Card className="bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 text-white rounded-2xl hover:border-blue-500/50 hover:shadow-[rgba(59,130,246,0.12)] transition-colors duration-300 group h-full">
         <CardHeader className="pb-4 flex flex-col gap-1.5">
-          <CardTitle className="text-xl md:text-2xl font-semibold text-zinc-50 flex items-center gap-4">
+          <CardTitle className="text-xl md:text-2xl font-semibold text-zinc-50 flex items-center gap-4 group-hover:text-blue-400">
             <span>
               <Briefcase className="h-5 w-5" />
             </span>
@@ -49,7 +49,7 @@ const EduCard = ({
             </div>
 
             <a
-              className="flex items-center gap-2 mt-2 text-zinc-300 border border-zinc-800 px-3 py-1.5 rounded-lg hover:bg-zinc-800 hover:text-emerald-400 transition-colors"
+              className="flex items-center gap-2 mt-2 text-zinc-300 border border-zinc-800 px-3 py-1.5 rounded-lg hover:bg-zinc-800 group-hover:text-blue-400 transition-colors"
               href={certLink}
               target="_blank"
               rel="noopener boreferrer"
@@ -66,7 +66,7 @@ const EduCard = ({
             {techStack.map((skill, index) => (
               <span
                 key={index}
-                className="px-3 py-1.5 text-xs font-medium bg-zinc-800/80 text-white rounded-full border border-zinc-700/60"
+                className="px-3 py-1.5 text-xs font-medium bg-zinc-800/80 text-white rounded-full border border-zinc-700/60 group-hover:border-blue-500/30 group-hover:text-blue-300"
               >
                 {skill}
               </span>

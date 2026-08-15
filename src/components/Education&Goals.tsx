@@ -1,4 +1,5 @@
 import EduCard from "./CardTemplates/EduCard";
+import { motion } from "motion/react";
 
 const Education = () => {
   const certificationData = [
@@ -56,16 +57,23 @@ const Education = () => {
       </div>
       <div className="mx-auto max-w-7xl flex flex-col gap-6 w-full">
         {certificationData.map((cert, index) => (
-          <EduCard
+          <motion.div
             key={index}
-            role={cert.role}
-            company={cert.company}
-            certLink={cert.certLink}
-            date={cert.date}
-            description={cert.description}
-            location={cert.location}
-            techStack={cert.techStack}
-          />
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <EduCard
+              role={cert.role}
+              company={cert.company}
+              certLink={cert.certLink}
+              date={cert.date}
+              description={cert.description}
+              location={cert.location}
+              techStack={cert.techStack}
+            />
+          </motion.div>
         ))}
       </div>
     </section>

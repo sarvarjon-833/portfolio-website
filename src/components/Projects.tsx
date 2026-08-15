@@ -1,4 +1,5 @@
 import ProjectCard from "./CardTemplates/ProjectCard";
+import { motion, type Variants } from "motion/react";
 
 const projectsData = [
   {
@@ -37,34 +38,74 @@ const projectsData = [
   },
 ];
 
+const continerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
+
 const Projects = () => {
   return (
     <section
       id="projects"
       className=" mx-auto w-full px-4 md:px-6 lg:px-8 sm:px-6 pt-32 py-20 bg-zinc-900"
     >
-      <div className="max-w-6xl mx-auto space-y-4 mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl text-gray-100">
-          Featured Projects
-        </h2>
-        <p className="max-w-2xl mx-auto text-zinc-400 text-sm md:text-base">
-          A selection of projects that demonstrate my expertise in full-stack
-          development and modern DevOps practices.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto h-full ">
+      <motion.div
+        variants={continerVariants}
+        initial="hidden"
+        whileInView={"visible"}
+        className="max-w-6xl mx-auto space-y-4 mb-12 text-center"
+      >
+        <motion.div variants={cardVariants}>
+          <h2 className="text-3xl md:text-4xl text-gray-100">
+            Featured Projects
+          </h2>
+          <p className="max-w-2xl mx-auto text-zinc-400 text-sm md:text-base">
+            A selection of projects that demonstrate my expertise in full-stack
+            development and modern DevOps practices.
+          </p>
+        </motion.div>
+      </motion.div>
+      <motion.div
+        variants={continerVariants}
+        initial="hidden"
+        whileInView={"visible"}
+        viewport={{ amount: 0.2 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto h-full"
+      >
         {projectsData.map((project, index) => (
-          <ProjectCard
+          <motion.div
+            variants={cardVariants}
             key={index}
-            title={project.title}
-            description={project.description}
-            demolink={project.demoLink}
-            image={project.image}
-            techStack={project.techStack}
-            codeLink={project.codeLink}
-          />
+            whileHover={{ y: -10, transition: { duration: 0.3 } }}
+          >
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              demolink={project.demoLink}
+              image={project.image}
+              techStack={project.techStack}
+              codeLink={project.codeLink}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -25,9 +25,9 @@ const Navbar = () => {
             </a>
             <a
               className="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium"
-              href="#experience"
+              href="#education"
             >
-              Experience
+              Education
             </a>
             <a
               className="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium"
@@ -41,17 +41,9 @@ const Navbar = () => {
             >
               Contacts
             </a>
-            <button className="text-gray-300 hover:text-emerald-400 transition-colors text-sm font-medium">
-              <Moon className="w-5 h-5 text-zinc-300 hover:text-white transition-colors cursor-pointer" />
-            </button>
           </div>
 
-          {/* Right side: moon icon and toggle button */}
           <div className="flex items-center gap-4 md:hidden">
-            <button className="text-gray-300 hover:text-emerald-400 transition-colors font-medium ">
-              <Moon className="w-5 h-5 text-zinc-300 hover:text-white transition-colors cursor-pointer" />
-            </button>
-
             <button
               onClick={() => setIsopen(!isOpen)}
               className="md:hidden p-2 rounded-lg text-zinc-300 hover:text-white transition-colors cursor-pointer"

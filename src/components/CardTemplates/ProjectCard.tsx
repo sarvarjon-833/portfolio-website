@@ -26,12 +26,14 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   return (
     <>
-      <Card className="bg-zinc-900/50 flex flex-col border border-zinc-800 text-white rounded-2xl hover:border-zinc-700 transition-all duration-300 w-full overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover aspect-video"
-        />
+      <Card className="bg-zinc-900/50 flex flex-col border border-zinc-800 text-white rounded-2xl hover:border-zinc-700 transition-all duration-300 h-full overflow-hidden group">
+        <div className="overflow-hidden">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover aspect-video transition-transform duration-500 group-hover:scale-120"
+          />
+        </div>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
         </CardHeader>
