@@ -143,19 +143,20 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row items-center  gap-4 mt-10">
               <Button
                 className={
-                  " cursor-pointer w-full sm:w-auto gap-2 py-6 px-8 rounded-lg bg-white text-black  hover:bg-gray-200 transition-all"
+                  " cursor-pointer w-full sm:w-auto gap-2 py-6 px-8 rounded-lg bg-gray-50 text-black  hover:bg-gray-300 transition-all"
                 }
               >
                 <Download className="w-5 h-5" />
                 Download Resume
               </Button>
-              <Button
+              <a
+                href="#projects"
                 className={
-                  " cursor-pointer w-full sm:w-auto gap-2 px-8 py-6 rounded-lg border-gray-700 bg-transparent hover:bg-zinc-800 text-gray-200"
+                  " cursor-pointer w-full sm:w-auto gap-2 px-8 py-4 rounded-lg border-gray-700 bg-transparent hover:bg-zinc-600 text-gray-200"
                 }
               >
                 View My Work
-              </Button>
+              </a>
             </div>
           </motion.div>
           {/* Social media icons */}
