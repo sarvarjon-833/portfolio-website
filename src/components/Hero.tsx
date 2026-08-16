@@ -141,14 +141,15 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center  gap-4 mt-10">
-              <Button
+              <a
+                href="/Resume/my-resume1.pdf"
                 className={
-                  " cursor-pointer w-full sm:w-auto gap-2 py-6 px-8 rounded-lg bg-gray-50 text-black  hover:bg-gray-300 transition-all"
+                  "flex items-center cursor-pointer w-full sm:w-auto gap-2 py-4 px-8 rounded-lg bg-gray-50 text-black  hover:bg-gray-300 transition-all"
                 }
               >
                 <Download className="w-5 h-5" />
                 Download Resume
-              </Button>
+              </a>
               <a
                 href="#projects"
                 className={
