@@ -152,7 +152,7 @@ const Hero = () => {
               <a
                 href="#projects"
                 className={
-                  " cursor-pointer w-full sm:w-auto gap-2 px-8 py-4 rounded-lg border-gray-700 bg-transparent hover:bg-zinc-600 text-gray-200"
+                  " cursor-pointer w-full sm:w-auto gap-2 py-4 px-8 rounded-lg bg-gray-50 text-black  hover:bg-gray-300 transition-all"
                 }
               >
                 View My Work
@@ -198,14 +198,18 @@ const Hero = () => {
           variants={imageVariants}
           className="order-1 md:order-2 w-full md:w-1/2 flex justify-center items-center mt-12 md:mt-0"
         >
-          <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 overflow-hidden transform">
+          <div className="relative w-80 h-80 sm:w-80 sm:h-80 lg:w-96 lg:h-96 transform group">
             {/* Main profile picture */}
-            <img
-              src="/my-profile2.jpg"
-              alt="my-profile-photo"
-              className="relative w-full h-full rounded-full object-cover shadow-2xl transition-all duration-300 ease-in-out hover:scale-110 border-4 border-zinc-900 p-2 bg-zinc-900/50"
-            />
-            <div className="absolute bottom-2 right-2 md:bottom-6 md:right-4 bg-zinc-900/90 border border-zinc-900 px-5 py-3 rounded-full flex items-center gap-3">
+            <motion.div
+              whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
+            >
+              <img
+                src="/my-profile2.jpg"
+                alt="my-profile-photo"
+                className="relative w-full h-full rounded-full overflow-hidden bg-white object-cover z-10 "
+              />
+            </motion.div>
+            <div className="absolute bottom-2 right-2 md:bottom-6 md:right-4 bg-zinc-900/90 border border-zinc-900 px-5 py-3 rounded-full flex items-center gap-3 z-20">
               {/* Pulsing green Dot */}
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
