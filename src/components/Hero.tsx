@@ -143,7 +143,7 @@ const Hero = () => {
               <a
                 href="/Resume/my-resume1.pdf"
                 className={
-                  "flex items-center cursor-pointer w-full sm:w-auto gap-2 py-4 px-8 rounded-lg bg-gray-50 text-black  hover:bg-gray-300 transition-all"
+                  "flex items-center justify-center cursor-pointer w-full gap-2 py-4 px-8 rounded-lg bg-gray-50 text-black  hover:bg-gray-300 transition-all"
                 }
               >
                 <Download className="w-5 h-5" />
@@ -152,7 +152,7 @@ const Hero = () => {
               <a
                 href="#projects"
                 className={
-                  " cursor-pointer w-full sm:w-auto gap-2 py-4 px-8 rounded-lg bg-gray-50 text-black  hover:bg-gray-300 transition-all"
+                  " cursor-pointer w-full flex items-center justify-center gap-2 py-4 px-8 rounded-lg bg-gray-50 text-black  hover:bg-gray-300 transition-all"
                 }
               >
                 View My Work
